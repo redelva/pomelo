@@ -4,11 +4,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>
-            chatofpomelo
+            Mahjong
         </title>
         <link rel="stylesheet" href="style.css" type="text/css" />
-        <script src="js/lib/jquery-1.8.0.min.js" type="text/javascript">
-        </script>
+        <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+        <script src="js/lib/jquery-1.8.0.min.js"></script>
+        <script src="js/lib/jquery-ui.min.js"></script>
 
         <script src="js/lib/build/build.js" type="text/javascript">
 
@@ -29,24 +30,37 @@
         <div id="app">
             <div id="loginView">
                 <div id="loginTitle">
-                    Chat of Pomelo
+                    麻将
                 </div>
                 <table>
                     <tr>
                         <td>
-                            <input id="loginUser" type="text" placeholder="enter your name" />
+                            <input id="loginUser" type="text" placeholder="用户名" value="lgq1"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input name="channels" type="text" id="channelList" placeholder="enter your channel"
-                            />
+                            <input id="password" type="text" placeholder="密码" value="lgq1"/>
                         </td>
-                        <tr>
-                            <td>
-                                <input id="login" type='button' value="join" />
-                            </td>
-                        </tr>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="regions" id="regionList">
+                                <option value="" disabled selected>服务器</option>
+                            </select>
+                        </td>
+                    <tr>
+                        <td>
+
+                            <select name="rooms" id="roomList">
+                                <option value="" disabled selected>房间</option>
+                            </select>
+                        </td>
+                    <tr>
+                        <td>
+                            <input id="login" type='button' value="join" />
+                        </td>
+                    </tr>
                 </table>
                 <div id="loginError">
                 </div>
@@ -69,9 +83,23 @@
                         </span>
                     </li>
                     <li>
+                        region:
+                        <span id="region">
+                        </span>
+                    </li>
+                    <li>
                         room:
                         <span id="room">
                         </span>
+                    </li>
+                    <li>
+                        <input type="button" value="start" id="start"/>
+                    </li>
+                    <li>
+                        <input type="button" value="send" id="send"/>
+                    </li>
+                    <li>
+                        <input type="button" value="pong" id="pong"/>
                     </li>
                 </ul>
                 <input tabindex="1" type="text" id="entry" />
@@ -93,6 +121,11 @@
                     No Tip Again
                 </p>
             </div>
+        </div>
+
+        <div id="dialog-form" title="创建新房间">
+            <label for="name">房间名字</label>
+            <input type="text" name="name" id="txtRoom" class="text ui-widget-content ui-corner-all">
         </div>
     </body>
 

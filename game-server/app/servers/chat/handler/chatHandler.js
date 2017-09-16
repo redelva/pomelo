@@ -19,7 +19,8 @@ var handler = Handler.prototype;
  *
  */
 handler.send = function(msg, session, next) {
-	var rid = session.get('rid');
+	var roomId = session.get('roomId');
+	var regionId = session.get('regionId');
 	var username = session.uid.split('*')[0];
 	var channelService = this.app.get('channelService');
 	var param = {
@@ -27,7 +28,7 @@ handler.send = function(msg, session, next) {
 		from: username,
 		target: msg.target
 	};
-	channel = channelService.getChannel(rid, false);
+	channel = channelService.getChannel(roomId + '@' + regionId, false);
 
 	//the target is all users
 	if(msg.target == '*') {
@@ -35,7 +36,7 @@ handler.send = function(msg, session, next) {
 	}
 	//the target is specific user
 	else {
-		var tuid = msg.target + '*' + rid;
+		var tuid = msg.target + '*' + roomId;
 		var tsid = channel.getMember(tuid)['sid'];
 		channelService.pushMessageByUids('onChat', param, [{
 			uid: tuid,

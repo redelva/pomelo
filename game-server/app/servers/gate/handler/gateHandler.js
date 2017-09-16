@@ -19,13 +19,13 @@ var handler = Handler.prototype;
  *
  */
 handler.queryEntry = function(msg, session, next) {
-	var uid = msg.uid;
-	if(!uid) {
-		next(null, {
-			code: 500
-		});
-		return;
-	}
+	var uid = msg.uid ? msg.uid : '';
+	// if(!uid) {
+	// 	next(null, {
+	// 		code: 500
+	// 	});
+	// 	return;
+	// }
 	// get all connectors
 	var connectors = this.app.getServersByType('connector');
 	if(!connectors || connectors.length === 0) {
